@@ -3,6 +3,7 @@ import { getCurrentLocation } from '../utils/geolocation'
 import { calculateDistance } from '../utils/distance'
 
 function Receiver({ userName, onLogout }) {
+    const url = import.meta.env.VITE_API_URL
     const [searchData, setSearchData] = useState({
         bloodGroup: '',
         area: '',
@@ -68,7 +69,7 @@ function Receiver({ userName, onLogout }) {
                 longitude: searchData.longitude
             })
 
-            const response = await fetch(`http://localhost:8000/api/donor/search?${query}`, {
+            const response = await fetch(`${url}/api/donor/search?${query}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

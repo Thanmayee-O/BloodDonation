@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { getCurrentLocation } from '../utils/geolocation'
 
 function Registration({ onRegistered, setCurrentPage }) {
+    const url = import.meta.env.VITE_API_URL
     const [formData, setFormData] = useState({
         name: '',
         age: '',
@@ -59,7 +60,7 @@ function Registration({ onRegistered, setCurrentPage }) {
             setLoading(true)
             setMessage({ type: '', text: '' })
 
-            const response = await fetch('http://localhost:8000/api/donor/register', {
+            const response = await fetch(`${url}/api/donor/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
